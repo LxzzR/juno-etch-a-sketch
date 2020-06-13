@@ -1,0 +1,5 @@
+Project Notes
+
+Tried using jQuery .effect("shake", duration), which I've successfully used in the past. It was adding a wrapper to my canvas and shrinking it on shake. This hasn't happened in the past, but I couldn't de-bug it, so I wrote a simple css animation instead. I would have prefered to use jQuery
+
+Used Wes Bos's Beginner JS - Etch - A - Sketch Lesson to set up my canvas

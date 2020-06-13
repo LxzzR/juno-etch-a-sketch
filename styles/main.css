@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: #222;
+    color: whitesmoke;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* HEADER */
+
+h1,
+h2 {
+    text-align: center;
+}
+
+h1 {
+    font-size: 4em;
+    margin-top: 50px;
+}
+
+.instructions {
+    font-size: 1.3rem;
+    padding: 20px 0;
+    text-align: center;
+}
+
+/* ETCH A SKETCH */
+.container {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+}
+
+.etch-a-sketch {
+    border: 50px solid crimson;
+    border-radius: 10px;
+    background: whitesmoke;
+    height: 500px;
+    width: 700px;
+}
+
+/* BUTTON */
+
+.shake-btn {
+    background: whitesmoke;
+    border: none;
+    border-radius: 5px;
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 50px auto;
+    padding: 15px 25px;
+    transition: background 200ms, transform 100ms;
+}
+
+.shake-btn:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+}
+
+/* CUSTOMIZATION */
+
+.control-panel {
+    background: lightslategray;
+    border-radius: 10px;
+    color: #222;
+    margin: 50px auto;
+    padding: 50px;
+    width: 700px;
+}
+
+.control-btn {
+    background: slategray;
+    border: none;
+    border-radius: 5px;
+    color: #222;
+    font-size: 1.2rem;
+    margin: 20px;
+    padding: 12px 20px;
+    width: 100px;
+    transition: background 100ms, transform 200ms;
+}
+
+.control-btn:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
+
+/* ANIMATION */
+.etch-a-sketch.shake {
+    animation: shake .9s;
+}
+
+@keyframes shake {
+    10%,
+    30%,
+    50%,
+    70%,
+    100% {
+    transform: translateY(15px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80%{
+    transform: translateY(-15px);
+    }
+}
+

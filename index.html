@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- GOOGLE FONTS -->
+    <link href="https://fonts.googleapis.com/css2?family=Carrois+Gothic&display=swap" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="./styles/main.css">
+    <title>Etch A Sketch</title>
+</head>
+<body class="body">
+    <h1>Etch A Sketch</h1>
+
+    <section class="instructions">
+        <p>Use the arrow keys to create your nostalgic masterpiece</p>
+    </section>
+
+    <div class="container">
+        <canvas class="etch-a-sketch" height="1000px" width="1400px"></canvas>
+    </div>
+
+
+    <button class="shake-btn" type="button" aria-label="SHAKE IT!">SHAKE IT!</button>
+
+    <section class="control-panel">
+        <h2>Control pannel</h2>
+
+        <h3>Themes</h3>
+        <button id="classic" class="control-btn" type="button" aria-label="classic">Classic</button>
+        <button id ="goth" class="control-btn" type="button" aria-label="goth">Goth</button>
+        <button id ="cyber" class="control-btn" type="button" aria-label="cyber">Cyber</button>
+        <button id ="pastel" class="control-btn" type="button" aria-label="pastel">Pastel</button>
+        
+        <h3>Settings</h3>
+        <button id ="thick" class="control-btn" type="button" aria-label="thick">Thick</button>
+        <button id ="thin" class="control-btn" type="button" aria-label="thinr">Thin</button>
+        <button id ="fast" class="control-btn" type="button" aria-label="fast">Fast</button>
+        <button id ="slow" class="control-btn" type="button" aria-label="slow">Slow</button>
+        <button id ="blue" class="control-btn" type="button" aria-label="slow">Blue</button>
+        <button id ="pink" class="control-btn" type="button" aria-label="slow">Pink</button>
+        <button id ="yellow" class="control-btn" type="button" aria-label="slow">Yellow</button>
+        <button id ="grey" class="control-btn" type="button" aria-label="slow">Grey</button>
+    </section>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type = "text/javascript" 
+    src = "https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+
+    
+    <!-- Local JS -->
+    <script src="./scripts/script.js"></script>
+</body>
+</html>
