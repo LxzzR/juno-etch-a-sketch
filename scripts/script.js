@@ -4,15 +4,14 @@ $(document).ready(function() {
 // Global Variables
 const $canvas = $('.etch-a-sketch'); 
 const $shake = $('.shake-btn');
+// Needed to select for same element twice because my jQuery a
 const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
-
-  // Settings Variables
 let lineWidth = 25;
 let speed = 3;
 let strokeStyle = 'grey';
 
-// Canvas Set Up == Wes Bos Beginner JS Tutorial 
+// Canvas Set Up == Thanks @ Wes Bos 'Beginner JS' Etch a Sketch Tutorial 
 const width = canvas.width;
 const height = canvas.height;
 
@@ -32,16 +31,16 @@ ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
 
-// Canvas Set Up Ends == Wes Bos Beginner JS Tutorial 
+// Canvas Set Up Ends == Thanks @ Wes Bos 'Beginner JS' Etch a Sketch Tutorial 
 
-// Draw Function
+// Draw Function - takes input from arrow keys to move canvas line along 2d coordinates
 const draw = (arrowKey) => {
   speed = speed;
   ctx.strokeStyle = strokeStyle;
   ctx.lineWidth = lineWidth;
   ctx.beginPath();
   ctx.moveTo(x, y);
-// Change line coordinates
+
 switch (arrowKey) {
   case 'ArrowRight':
     x += 10 * speed;
@@ -85,7 +84,7 @@ const handleKeyDown = () => {
   });
 }
 
-// HANDLE THEMES
+// HANDLE THEMES === To be converted later into SASS 
 
 const handleClassic = () => {
   $('#classic').click(function() {
@@ -96,7 +95,6 @@ const handleClassic = () => {
     $('.control-btn').css('background', 'slategray').css('color', '#222').css('fontFamily', 'Arial');
   })
 }
-
 
 const handleGoth = () => {
   $('#goth').click(function() {
@@ -128,9 +126,7 @@ const handleCyber = () => {
   })
 }
 
-// HANDLE SETTINGS
-
-// HANDLE COLOURS
+// HANDLE CONTROLS
 
 const handleSettings = () => {
   $('.control-btn').click(function() {
@@ -158,8 +154,6 @@ const handleColor = () => {
     strokeStyle = color;
   })
 }
-
-
 
 // CALL IT!
 handleShake();
