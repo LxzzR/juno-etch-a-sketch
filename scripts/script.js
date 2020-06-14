@@ -8,11 +8,11 @@ const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 
   // Settings Variables
-let lineWidth = 20;
+let lineWidth = 25;
 let speed = 3;
 let strokeStyle = 'grey';
 
-// Canvas Set Up 
+// Canvas Set Up == Wes Bos Beginner JS Tutorial 
 const width = canvas.width;
 const height = canvas.height;
 
@@ -24,7 +24,7 @@ let y = Math.floor(Math.random() * height);
 ctx.strokeStyle = strokeStyle;
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
-ctx.lineWidth = 25;
+ctx.lineWidth = lineWidth;
 
 // Initialize line
 ctx.beginPath(); 
@@ -32,7 +32,7 @@ ctx.moveTo(x, y);
 ctx.lineTo(x, y);
 ctx.stroke();
 
-// Canvas Set Up Ends
+// Canvas Set Up Ends == Wes Bos Beginner JS Tutorial 
 
 // Draw Function
 const draw = (arrowKey) => {
@@ -130,69 +130,47 @@ const handleCyber = () => {
 
 // HANDLE SETTINGS
 
-const handleThick = () => {
-  $('#thick').click(function() {
-    lineWidth = 40;
+// HANDLE COLOURS
+
+const handleSettings = () => {
+  $('.control-btn').click(function() {
+    console.log($(this).attr('data-control'));
+    switch ($(this).attr('data-control')) {
+      case 'thick': 
+      lineWidth = 40;
+        break;
+      case 'thin':
+        lineWidth = 25;
+        break;
+      case 'fast':
+        speed = 10;
+        break;
+      case 'slow':
+        speed = 3;
+        break;
+    }
+  })
+}  
+
+const handleColor = () => {
+  $('.control-btn').click(function() {
+    let color = $(this).attr('data-control');
+    strokeStyle = color;
   })
 }
 
-const handleThin = () => {
-  $('#thin').click(function() {
-    lineWidth = 25;
-  })
-}
 
-const handleFast = () => {
-  $('#fast').click(function() {
-    speed = 10;
-  })
-}
-
-const handleSlow = () => {
-  $('#slow').click(function() {
-    speed = 3;
-  })
-}
-
-const handleBlue = () => {
-  $('#blue').click(function() {
-    strokeStyle = 'lightskyblue';
-  })
-}
-
-const handlePink = () => {
-  $('#pink').click(function() {
-    strokeStyle = 'pink';
-  })
-}
-
-const handleYellow = () => {
-  $('#yellow').click(function() {
-    strokeStyle = 'gold';
-  })
-}
-
-const handleGrey = () => {
-  $('#grey').click(function() {
-    strokeStyle = 'grey';
-  })
-}
 
 // CALL IT!
 handleShake();
 handleKeyDown();
-handleThick();
-handleThin();
-handleFast();
+handleSettings();
+handleColor();
 handleGoth();
 handleClassic();
 handlePastel();
 handleCyber();
-handleSlow();
-handleBlue();
-handlePink();
-handleYellow();
-handleGrey();
+
 
 // Document Ready ENDS
 })
