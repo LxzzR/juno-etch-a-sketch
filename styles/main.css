@@ -73,6 +73,10 @@ h1 {
     width: 700px;
 }
 
+.mobile-controls {
+    display:none;
+}
+
 .control-btn {
     background: slategray;
     border: none;
@@ -112,3 +116,15 @@ h1 {
     }
 }
 
+/* Not best practice - but threw in some mobile functionality after the fact */
+@media all and (max-width: 768px) {
+    .etch-a-sketch,
+    .control-panel {
+        border-radius: 0;
+        max-width: 100%;
+        text-align: center;
+    }
+    .mobile-controls {
+        display: block;
+    }
+}

@@ -1,25 +1,29 @@
 // Document Ready
 $(document).ready(function() {
 
-// Global Variables
+// Namespace object
+const app = {};
+
+// Global Variables - Scoped to Doc Ready Func
+// I have declared these in the doc ready function scope because I need access them in my app's functions but I feel like this defeats the purpose of namespacing? What is the best practice here? Should I try to re-write them as part of the namespace object &&|| use them in my functions and pass them around as arguments? I'd like to improve this: 
+
 const $canvas = $('.etch-a-sketch'); 
+
 const $shake = $('.shake-btn');
-// Needed to select for same element twice because my jQuery a
-const canvas = document.querySelector('canvas');
-const ctx = canvas.getContext('2d');
+const ctx = $canvas[0].getContext('2d');
 let lineWidth = 25;
 let speed = 3;
 let strokeStyle = 'grey';
 
 // Canvas Set Up == Thanks @ Wes Bos 'Beginner JS' Etch a Sketch Tutorial 
-const width = canvas.width;
-const height = canvas.height;
+const width = $canvas[0].width;
+const height = $canvas[0].height;
 
-// Randomize starting coordinates
+// Randomize starting coordinates for line
 let x = Math.floor(Math.random() * width);
 let y = Math.floor(Math.random() * height);
 
-// Line style
+// Line styleing
 ctx.strokeStyle = strokeStyle;
 ctx.lineJoin = 'round';
 ctx.lineCap = 'round';
@@ -34,35 +38,43 @@ ctx.stroke();
 // Canvas Set Up Ends == Thanks @ Wes Bos 'Beginner JS' Etch a Sketch Tutorial 
 
 // Draw Function - takes input from arrow keys to move canvas line along 2d coordinates
-const draw = (arrowKey) => {
+app.draw = (arrowKey) => {
   speed = speed;
   ctx.strokeStyle = strokeStyle;
   ctx.lineWidth = lineWidth;
   ctx.beginPath();
   ctx.moveTo(x, y);
 
-switch (arrowKey) {
-  case 'ArrowRight':
+  if (arrowKey === 'ArrowRight') {
     x += 10 * speed;
-    break;
-  case 'ArrowLeft':
+  } else if (arrowKey === 'ArrowLeft') {
     x -= 10 * speed;
-    break;
-  case 'ArrowDown':
+  } else if (arrowKey === 'ArrowDown') {
     y += 10 * speed;
-    break;
-  case 'ArrowUp':
+  } else if (arrowKey === 'ArrowUp') {
     y -= 10 * speed;
-  default:
-    break;
-}
+  }
+
   ctx.lineTo(x, y);
   ctx.stroke();
 }
 
 // EVENT HANDLERS 
 
-const handleShake = () => {
+app.handleKeyDown = () => {
+  $(document).keydown(function(e) {
+    if (e.key.includes('Arrow')) {
+      let arrowKey = e.key;
+      e.preventDefault();
+      // Call Draw Function
+      app.draw(arrowKey);
+    }
+  });
+}
+
+// Clear the canvas and add shake animation 
+// I tried using the jQuery shake effect (which I've used a few times before with no issues), but it was adding a wrapper to my canvas and shrinking it's dimensons to fit within a wrapper of the canvas's original size
+app.handleShake = () => {
   $shake.click(function() {
   $canvas.removeClass('shake');
   setTimeout(() => {
@@ -71,32 +83,23 @@ const handleShake = () => {
   }, 200);
   
 });
-}
+} 
 
-const handleKeyDown = () => {
-  $(document).keydown(function(e) {
-    if (e.key.includes('Arrow')) {
-      let arrowKey = e.key;
-      e.preventDefault();
-      // Call Draw Function
-      draw(arrowKey);
-    }
-  });
-}
+// HANDLE THEMES === 
+// Unique theme event handlers, not DRY but offers better readability as there is a lot of chained code in these functions
+// Theme styles to be converted into SASS in order to conform with best practices
 
-// HANDLE THEMES === To be converted later into SASS 
-
-const handleClassic = () => {
+app.handleClassic = () => {
   $('#classic').click(function() {
-    $('body').css('background', '#222').css('color', 'whitesmoke').css('fontFamily', 'Courier New');
-    $canvas.css('border', '50px solid crimson').css('background', 'whitesmoke');
-    $shake.css('background', 'whitesmoke').css('color', '#222').css('fontFamily', 'Arial');
-    $('.control-panel').css('background', 'lightslategray').css('color', '#222');
-    $('.control-btn').css('background', 'slategray').css('color', '#222').css('fontFamily', 'Arial');
+  $('body').css('background', '#222').css('color', 'whitesmoke').css('fontFamily', 'Courier New');
+  $canvas.css('border', '50px solid crimson').css('background', 'whitesmoke');
+  $shake.css('background', 'whitesmoke').css('color', '#222').css('fontFamily', 'Arial');
+  $('.control-panel').css('background', 'lightslategray').css('color', '#222');
+  $('.control-btn').css('background', 'slategray').css('color', '#222').css('fontFamily', 'Arial');
   })
 }
 
-const handleGoth = () => {
+app.handleGoth = () => {
   $('#goth').click(function() {
     $('body').css('background', '#111').css('color', 'grey').css('fontFamily', 'Carrois Gothic');
     $canvas.css('border', '50px solid #222').css('background', 'black');
@@ -106,7 +109,7 @@ const handleGoth = () => {
   })
 } 
 
-const handlePastel = () => {
+app.handlePastel = () => {
   $('#pastel').click(function() {
     $('body').css('background', 'whitesmoke').css('color', '#111').css('fontFamily', 'Kalam');
     $canvas.css('border', '50px solid pink').css('background', 'white');
@@ -116,7 +119,7 @@ const handlePastel = () => {
   })
 }
 
-const handleCyber = () => {
+app.handleCyber = () => {
   $('#cyber').click(function() {
     $('body').css('background', 'maroon').css('color', 'yellow').css('fontFamily', 'Comic Sans');
     $canvas.css('border', '50px solid lawngreen').css('background', 'blue');
@@ -128,43 +131,67 @@ const handleCyber = () => {
 
 // HANDLE CONTROLS
 
-const handleSettings = () => {
+// Event handlers for btns that change stroke color, thickness and speed
+app.handleSettings = () => {
   $('.control-btn').click(function() {
-    console.log($(this).attr('data-control'));
-    switch ($(this).attr('data-control')) {
-      case 'thick': 
+    let setting = $(this).attr('data-control');
+    // Handle Color
+    strokeStyle = setting;
+    // Handle Settings
+    if (setting === 'thick') {
       lineWidth = 40;
-        break;
-      case 'thin':
-        lineWidth = 25;
-        break;
-      case 'fast':
-        speed = 10;
-        break;
-      case 'slow':
-        speed = 3;
-        break;
+    } else if (setting === 'thin') {
+      lineWidth = 25;
+    } else if (setting === 'fast') {
+      speed = 10;
+    } else if (setting === 'slow') {
+      setting = 3;
     }
   })
-}  
+} 
 
-const handleColor = () => {
-  $('.control-btn').click(function() {
-    let color = $(this).attr('data-control');
-    strokeStyle = color;
+// Draw function for smaller veiwport touch screen devices (hidden on desktop)
+// Question: Should both draw functions be inside ONE function? ( I wasn't sure what to do here, because I have a button event listener and a document keydown listener and they behave the same but have different triggers)
+app.drawMobile = () => {
+  $('.control-btn').on('click', function() {
+    let direction = $(this).attr('data-control');
+    speed = speed;
+    ctx.strokeStyle = strokeStyle;
+    ctx.lineWidth = lineWidth;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+  
+    console.log(direction);
+  
+    if (direction === 'right') {
+      x += 10 * speed;
+    } else if (direction === 'left') {
+      x -= 10 * speed;
+    } else if (direction === 'down') {
+      y += 10 * speed;
+    } else if (direction === 'up') {
+      y -= 10 * speed;
+    }
+  
+    ctx.lineTo(x, y);
+    ctx.stroke();
   })
+  }
+
+// Initalizes application
+app.init = () => {
+  app.drawMobile();
+  app.handleShake();
+  app.handleKeyDown();
+  app.handleSettings();
+  app.handleClassic();
+  app.handleGoth();
+  app.handlePastel();
+  app.handleCyber();
 }
 
 // CALL IT!
-handleShake();
-handleKeyDown();
-handleSettings();
-handleColor();
-handleGoth();
-handleClassic();
-handlePastel();
-handleCyber();
-
+app.init();
 
 // Document Ready ENDS
 })
