@@ -121,6 +121,9 @@ h1 {
 /* MEDIA QUERIES */
 /* Not best practice here - but threw in some mobile functionality for fun */
 @media all and (max-width: 768px) {
+    h1 {
+        font-size: 3.3rem;
+    }
     .etch-a-sketch,
     .control-panel {
         border-radius: 0;

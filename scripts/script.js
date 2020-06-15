@@ -106,6 +106,7 @@ app.handleGoth = () => {
     $shake.css('background', '#222').css('color', 'grey').css('fontFamily', 'Carrois Gothic');
     $('.control-panel').css('background', 'black').css('color', 'grey');
     $('.control-btn').css('background', '#111').css('color', 'grey').css('fontFamily', 'Carrois Gothic');
+    $('.mobile-btn').css('background', 'grey').css('color', 'black');
   })
 } 
 
@@ -116,6 +117,8 @@ app.handlePastel = () => {
     $shake.css('background', 'white').css('color', '#111').css('fontFamily', 'Kalam');
     $('.control-panel').css('background', 'white').css('color', '#222').css('fontFamily', 'Arial');
     $('.control-btn').css('background', 'whitesmoke').css('color', '#222').css('fontFamily', 'Kalam');
+    $('.mobile-btn').css('background', 'white');
+    
   })
 }
 
@@ -125,7 +128,7 @@ app.handleCyber = () => {
     $canvas.css('border', '50px solid lawngreen').css('background', 'blue');
     $shake.css('background', 'purple').css('fontFamily', 'Times New Roman').css('color', 'yellow');
     $('.control-panel').css('background', 'red').css('color', 'yellow');
-    $('.control-btn').css('background', 'orange').css('borderRadius', '0').css('color', 'purple').css('fontFamily', 'Times New Roman');
+    $('.control-btn').css('background', 'orange').css('color', 'purple').css('fontFamily', 'Times New Roman');
   })
 }
 
