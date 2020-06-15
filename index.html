@@ -17,11 +17,20 @@
 <body class="body">
     <header class="instructions">
     <h1>Etch A Sketch</h1>
-    <p>Use the arrow keys to create your nostalgic masterpiece</p>
+    <p class="desktop">Use the arrow keys to create your nostalgic masterpiece</p>
+    <p class="mobile">Use the buttons to create your nostalgic masterpiece</p>
 </header>
 
     <div class="container">
         <canvas class="etch-a-sketch" height="1000px" width="1400px"></canvas>
+    </div>
+
+    <div class="mobile">
+        <h3>Directions</h3>
+        <button data-control="up" class="control-btn" type="button" aria-label="up">Up</button>
+        <button data-control="down" class="control-btn" type="button" aria-label="down">Down</button>
+        <button data-control="right" class="control-btn" type="button" aria-label="right">Right</button>
+        <button data-control="left" class="control-btn" type="button" aria-label="left">Left</button>
     </div>
 
     <button class="shake-btn" type="button" aria-label="SHAKE IT!">SHAKE IT!</button>
@@ -29,14 +38,6 @@
     <section class="control-panel">
 
         <h2>Control pannel</h2>
-        <div class="mobile-controls">
-            <h3>Directions</h3>
-            <button data-control="up" class="control-btn" type="button" aria-label="up">Up</button>
-            <button data-control="down" class="control-btn" type="button" aria-label="down">Down</button>
-            <button data-control="right" class="control-btn" type="button" aria-label="right">Right</button>
-            <button data-control="left" class="control-btn" type="button" aria-label="left">Left</button>
-        </div>
-
         <h3>Themes</h3>
         <button id="classic" class="control-btn" type="button" aria-label="classic">Classic</button>
         <button id="goth" class="control-btn" type="button" aria-label="goth">Goth</button>
