@@ -6,7 +6,7 @@
 
 body {
     background: #222;
-    color: whitesmoke;
+    color: #f5f5f5;
     font-family: 'Courier New', Courier, monospace;
 }
 
@@ -28,25 +28,24 @@ h1 {
     text-align: center;
 }
 
+
 /* ETCH A SKETCH */
 .container {
     display: flex;
     justify-content: center;
-    margin: 50px auto;
 }
 
 .etch-a-sketch {
-    border: 50px solid crimson;
+    border: 50px solid #dc143c;
     border-radius: 10px;
-    background: whitesmoke;
+    background: #f5f5f5;
+    margin: 50px 0;
     height: 500px;
     width: 700px;
 }
 
-/* BUTTON */
-
 .shake-btn {
-    background: whitesmoke;
+    background: #f5f5f5;
     border: none;
     border-radius: 5px;
     display: block;
@@ -65,10 +64,10 @@ h1 {
 /* CUSTOMIZATION */
 
 .control-panel {
-    background: lightslategray;
+    background: #778899;
     border-radius: 10px;
     color: #222;
-    margin: 50px auto;
+    margin: auto;
     padding: 50px 10px;
     text-align: center;
     width: 700px;
@@ -80,7 +79,7 @@ h1 {
 }
 
 .control-btn {
-    background: slategray;
+    background: #708090;
     border: none;
     border-radius: 5px;
     color: #222;

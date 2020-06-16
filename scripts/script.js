@@ -118,7 +118,6 @@ app.handlePastel = () => {
     $('.control-panel').css('background', 'white').css('color', '#222').css('fontFamily', 'Arial');
     $('.control-btn').css('background', 'whitesmoke').css('color', '#222').css('fontFamily', 'Kalam');
     $('.mobile-btn').css('background', 'white');
-    
   })
 }
 

@@ -16,10 +16,10 @@
 </head>
 <body class="body">
     <header class="instructions">
-    <h1>Etch A Sketch</h1>
-    <p class="desktop">Use the arrow keys to create your nostalgic masterpiece</p>
-    <p class="mobile">Tap the direction buttons to create your nostalgic masterpiece</p>
-</header>
+        <h1>Etch A Sketch</h1>
+        <p class="desktop">Use the arrow keys to create your nostalgic masterpiece</p>
+        <p class="mobile">Tap the direction buttons to create your nostalgic masterpiece</p>
+    </header>
 
     <div class="container">
         <canvas class="etch-a-sketch" height="1000px" width="1400px"></canvas>
@@ -31,13 +31,11 @@
         <button data-control="down" class="mobile-btn control-btn" type="button" aria-label="down">Down</button>
         <button data-control="right" class="mobile-btn control-btn" type="button" aria-label="right">Right</button>
         <button data-control="left" class="mobile-btn control-btn" type="button" aria-label="left">Left</button>
+        </div>
     </div>
 
-    <button class="shake-btn" type="button" aria-label="SHAKE IT!">SHAKE IT!</button>
-
-    <section class="control-panel">
-
-        <h2>Control pannel</h2>
+    <section class="half-width control-panel">
+        <h2>Control panel</h2>
 
         <h3>Colours</h3>
         <button data-control="lightskyblue" class="control-btn" type="button" aria-label="blue">Blue</button>
@@ -58,8 +56,11 @@
         <button id="pastel" class="control-btn" type="button" aria-label="pastel">Pastel</button>
     </section>
 
+    <button class="shake-btn" type="button" aria-label="SHAKE IT!">SHAKE IT!</button>
+
     <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="test.js"></script>
     
     <!-- Local JS -->
     <script src="./scripts/script.js"></script>
